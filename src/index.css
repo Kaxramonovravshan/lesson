@@ -6,4 +6,8 @@ td {
   .table_ {
     width: 85% !important;
   }
+
+  .rodal-dialog{
+    width: 80% !important;
+  }
 }
