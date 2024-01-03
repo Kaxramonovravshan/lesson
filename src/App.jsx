@@ -48,13 +48,6 @@ const App = () => {
 
   return (
     <div>
-      <button
-        onClick={() => {
-          console.log(newVideo);
-        }}
-      >
-        test
-      </button>
       <h1>Lessons</h1>
       <div className="w-50 mx-auto d-flex justify-content-end mb-2">
         <button
@@ -105,7 +98,9 @@ const App = () => {
                 return (
                   <tr key={i}>
                     <td>{itm.vName}</td>
-                    <td>{itm.vLink}</td>
+                    <td>
+                      <a href={itm.vLink}>{itm.vLink}</a>
+                    </td>
                   </tr>
                 );
               })}
