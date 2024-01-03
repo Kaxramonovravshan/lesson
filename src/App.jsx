@@ -46,6 +46,11 @@ const App = () => {
     localStorage.setItem("lessons", JSON.stringify(lessons));
   }
 
+  function delItem(i) {
+    lessons.slice(i, 1);
+    setLessonss([...lessons]);
+  }
+
   return (
     <div>
       <h1>Lessons</h1>
@@ -71,7 +76,12 @@ const App = () => {
                 <td onClick={() => openVideo(index)}>{item.name}</td>
                 <td>
                   <button className="btn btn-warning">edit</button>
-                  <button className="btn btn-danger">x</button>
+                  <button
+                    onClick={(index) => delItem(index)}
+                    className="btn btn-danger"
+                  >
+                    x
+                  </button>
                 </td>
               </tr>
             );
@@ -99,7 +109,9 @@ const App = () => {
                   <tr key={i}>
                     <td>{itm.vName}</td>
                     <td>
-                      <a target={"_blank"} href={itm.vLink}>{itm.vLink}</a>
+                      <a target={"_blank"} href={itm.vLink}>
+                        {itm.vLink}
+                      </a>
                     </td>
                   </tr>
                 );
