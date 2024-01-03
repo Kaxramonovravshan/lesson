@@ -3,7 +3,7 @@ td {
 }
 
 @media (max-width: 500px) {
-  table {
+  .table_ {
     width: 85% !important;
   }
 }

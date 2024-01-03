@@ -63,7 +63,7 @@ const App = () => {
           +
         </button>
       </div>
-      <table className="table w-50 mx-auto table-bordered table-hover">
+      <table className="table_ table w-50 mx-auto table-bordered table-hover">
         <thead>
           <tr>
             <th>Lesson name</th>
@@ -78,7 +78,7 @@ const App = () => {
                 <td>
                   <button className="btn btn-warning">edit</button>
                   <button
-                    onClick={(index) => delItem(index)}
+                    onClick={() => delItem(index)}
                     className="btn btn-danger"
                   >
                     x
