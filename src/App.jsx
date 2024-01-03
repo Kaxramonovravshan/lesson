@@ -49,6 +49,7 @@ const App = () => {
   function delItem(i) {
     lessons.slice(i, 1);
     setLessonss([...lessons]);
+    saveLocal()
   }
 
   return (
