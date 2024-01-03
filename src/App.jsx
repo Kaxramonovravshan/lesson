@@ -99,7 +99,7 @@ const App = () => {
                   <tr key={i}>
                     <td>{itm.vName}</td>
                     <td>
-                      <a href={itm.vLink}>{itm.vLink}</a>
+                      <a target={"_blank"} href={itm.vLink}>{itm.vLink}</a>
                     </td>
                   </tr>
                 );
