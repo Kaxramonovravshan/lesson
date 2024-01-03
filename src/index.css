@@ -1,3 +1,9 @@
-td{
+td {
   cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  table {
+    width: 85% !important;
+  }
 }
