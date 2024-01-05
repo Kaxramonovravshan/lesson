@@ -10,6 +10,7 @@ const App = () => {
   const [saveModal, setSaveModal] = useState(false);
   const [inpValue, setInpValue] = useState("");
   const [newVideo, setNewVideo] = useState([]);
+  const [currentItem, setCurrentItem] = useState("");
 
   function openVideo(i) {
     setCurrentLesson(i);
@@ -34,10 +35,19 @@ const App = () => {
   }
 
   function saveLesson() {
-    lessons.push({
-      name: inpValue,
-      video: newVideo
-    });
+    if (currentItem === "") {
+      lessons.push({
+        name: inpValue,
+        video: newVideo
+      });
+    } else {
+      lessons[currentItem] = {
+        name: inpValue,
+        video: newVideo
+      };
+      setCurrentItem("");
+    }
+
     setLessonss([...lessons]);
     setSaveModal(!saveModal);
     saveLocal();
@@ -49,6 +59,19 @@ const App = () => {
   function delItem(i) {
     lessons.splice(i, 1);
     setLessonss([...lessons]);
+    saveLocal();
+  }
+
+  function editItem(i, itm) {
+    setCurrentItem(i);
+    setSaveModal(!saveModal);
+    setNewVideo(itm.video);
+    setInpValue(itm.name);
+  }
+
+  function deleteInp(i) {
+    newVideo.splice(i, 1);
+    setNewVideo([...newVideo]);
     saveLocal();
   }
 
@@ -76,7 +99,12 @@ const App = () => {
               <tr key={index}>
                 <td onClick={() => openVideo(index)}>{item.name}</td>
                 <td>
-                  <button className="btn btn-warning">edit</button>
+                  <button
+                    onClick={() => editItem(index, item)}
+                    className="btn btn-warning"
+                  >
+                    edit
+                  </button>
                   <button
                     onClick={() => delItem(index)}
                     className="btn btn-danger"
@@ -141,15 +169,20 @@ const App = () => {
             return (
               <div key={i} className="mb-2 d-flex gap-2">
                 <input
+                  value={newVideo[i].vName}
                   onChange={(e) => saveValue(e, i)}
                   className="form-control"
                   type="text"
                 />
                 <input
+                  value={newVideo[i].vLink}
                   onChange={(e) => saveValue2(e, i)}
                   className="form-control "
                   type="text"
                 />
+                <button onClick={() => deleteInp(i)} className="btn btn-danger">
+                  X
+                </button>
               </div>
             );
           })}

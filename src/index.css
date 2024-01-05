@@ -2,6 +2,10 @@ td {
   cursor: pointer;
 }
 
+.rodal-dialog{
+  overflow-y: scroll;
+}
+
 @media (max-width: 500px) {
   .table_ {
     width: 85% !important;
